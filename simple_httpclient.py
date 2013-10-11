@@ -158,7 +158,7 @@ class _HTTPConnection(object):
                 self.stream = IOStream(socket.socket(af, socktype, proto), io_loop=self.io_loop, max_buffer_size=max_buffer_size)
             timeout = min(request.connect_timeout, request.request_timeout)
             if timeout:
-                self._timeout = self.io_loop.add_timeout(self.start_time + timeout, stack_context.wrap(self._on_timeout))
+                self._timeout = self.io_loop.add_timeout(self.start_time+timeout, stack_context.wrap(self._on_timeout))
             self.stream.set_close_callback(self._on_close)
             self.stream.connect(sockaddr, functools.partial(self._on_connect, parsed, parsed_hostname))
 
